@@ -43,8 +43,9 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        for k in pairs(Config.MarkerZones) do
-            DrawMarker(Config.TypeMarker, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0, 0, 0, 0, 0, 0, Config.MarkerScale[k].x, Config.MarkerScale[k].y, Config.MarkerScale[k].z, Config.MarkerColor[k].r, Config.MarkerColor[k].g, Config.MarkerColor[k].b, 100, 0, 0, 0, 0)	
+        for k in pairs(Config.BlipZones) do
+			DrawMarker(38, Config.BlipZones[k].x, Config.BlipZones[k].y, Config.BlipZones[k].z, 0, 0, 0, 0, 0, 0, 0.801, 0.801, 0.801, 255, 0, 0, 200, 0, 0, 0, 0)
+			DrawMarker(27, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0, 0, 0, 0, 0, 0, 1.001, 1.001, 1.001, 255, 0, 0, 200, 0, 0, 0, 0)
 		end
     end
 end)
@@ -77,14 +78,14 @@ Citizen.CreateThread(function()
 						if Config.EnableEffects then
 							ESX.ShowNotification(_U('bikemessage'))
 						else
-							TriggerEvent("chatMessage", _U('bikes'), {255,255,0}, _U('bikemessage'))
+							TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('bikemessage'))
 						end
 						havebike = false
 					else
 						if Config.EnableEffects then
 							ESX.ShowNotification(_U('notabike'))
 						else
-							TriggerEvent("chatMessage", _U('bikes'), {255,255,0}, _U('notabike'))
+							TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('notabike'))
 						end
 					end 		
 				end
@@ -132,7 +133,7 @@ function OpenBikesMenu()
 	if data.current.value == 'bike' then
 		if Config.EnablePrice then
 			TriggerServerEvent("esx:bike:lowmoney", Config.PriceTriBike) 
-			TriggerEvent("chatMessage", _U('bikes'), {255,0,255}, _U('bike_pay', Config.PriceTriBike))
+			TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('bike_pay', Config.PriceTriBike))
 		end
 		
 		if Config.EnableEffects then
@@ -145,7 +146,7 @@ function OpenBikesMenu()
 	if data.current.value == 'bike2' then
 		if Config.EnablePrice then
 			TriggerServerEvent("esx:bike:lowmoney", Config.PriceScorcher) 
-			TriggerEvent("chatMessage", _U('bikes'), {255,0,255}, _U('bike_pay', Config.PriceScorcher))
+			TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('bike_pay', Config.PriceScorcher))
 		end
 		
 		if Config.EnableEffects then
@@ -159,7 +160,7 @@ function OpenBikesMenu()
 	if data.current.value == 'bike3' then
 		if Config.EnablePrice then
 			TriggerServerEvent("esx:bike:lowmoney", Config.PriceCruiser) 
-			TriggerEvent("chatMessage", _U('bikes'), {255,0,255}, _U('bike_pay', Config.PriceCruiser))
+			TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('bike_pay', Config.PriceCruiser))
 		end
 		
 		if Config.EnableEffects then
@@ -172,7 +173,7 @@ function OpenBikesMenu()
 	if data.current.value == 'bike4' then
 		if Config.EnablePrice then
 			TriggerServerEvent("esx:bike:lowmoney", Config.PriceBmx) 
-			TriggerEvent("chatMessage", _U('bikes'), {255,0,255}, _U('bike_pay', Config.PriceBmx))
+			TriggerEvent("chatMessage", _U('bikes'), {255,0,0}, _U('bike_pay', Config.PriceBmx))
 		end
 		
 		if Config.EnableEffects then
